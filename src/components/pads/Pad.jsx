@@ -5,11 +5,12 @@ import useSound from 'use-sound'
 
 
 const Pad = ({ padNumber, padFile, clickHandler, padSound, padProps})  => {
-const [padClass, setpadClass] = useState('pad');
+const [padClass, setpadClass] = useState('pad pushable');
 
 const [playSound] = useSound( padSound, padProps );
   return (
     <>
+      
       <div className={padClass}
         onClick={() => {
             clickHandler( "Pad " + padNumber, padFile )
@@ -17,13 +18,17 @@ const [playSound] = useSound( padSound, padProps );
 
             setpadClass('pad active')
             setTimeout(() => {
-              setpadClass('pad')
+              setpadClass('pad pushable')
             }, 100);
           } 
         }
       >
-       {padFile}         
+        <span class="front">{padFile}</span>
+               
       </div>
+
+
+
     </>
   )
 }
