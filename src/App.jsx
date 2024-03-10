@@ -9,11 +9,9 @@ import PadsPanel from './components/pads/PadsPanel'
 const App = () => {
   const [padName, setPadName] = useState("Welcome to PadsAPP");
   const [fileName, setFileName] = useState("by TNR Beats Lab");
-  
 
   return (
-    <div className="App">
-      
+    <div className="App">    
       <Nav></Nav>
       <div className='content'>
         <Screen padName={padName} fileName={fileName} ></Screen>
@@ -25,10 +23,7 @@ const App = () => {
             
           }} 
         />
-        
       </div>
-      
-
     </div>
   );
 }
