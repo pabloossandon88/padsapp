@@ -1,18 +1,26 @@
-import React from 'react'
+import React, {useState} from 'react'
 import PropTypes from 'prop-types'
 import useSound from 'use-sound'
 
+
 const Pad = ({ padNumber, padFile, clickHandler, padSound, padProps})  => {
   const [playSound] = useSound( padSound, padProps );
-
+  const [padClassName, setPadClassName] = useState("pad");
   return (
     <>
-      <div className={"pad"}
-        onClick={() => {
-            clickHandler( "Pad " + padNumber, padFile )
-            if( padSound )  playSound()
-          } 
-        }
+      <div className={padClassName}
+
+        onTouchStart={() => {
+          clickHandler( "Pad " + padNumber, padFile )
+          if( padSound ) {
+            playSound()
+            setPadClassName( "pad active")
+            setTimeout(() => {
+              setPadClassName( "pad")
+            }, 100);
+          }
+
+        } }
       >
         <span className={"pad-touchable"}>{padFile}</span>
       </div>
