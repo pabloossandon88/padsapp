@@ -10,12 +10,19 @@ const App = () => {
   const [padName, setPadName] = useState("Welcome to PadsAPP");
   const [fileName, setFileName] = useState("by TNR Beats Lab");
 
+  const handleSpeedChange = (speed) => {
+    const audioElement = document.querySelector('audio');
+    if (audioElement) {
+      audioElement.playbackRate = speed;
+    }
+  };
+
   return (
     <div className="App">    
       <Nav></Nav>
       <div className='content'>
         <Screen padName={padName} fileName={fileName} ></Screen>
-        <Controls></Controls>
+        <Controls onSpeedChange={handleSpeedChange} />
         <PadsPanel 
           onClickPad={(pad, fileName) => {
             setPadName(`${pad}`);

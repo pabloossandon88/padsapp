@@ -171,9 +171,19 @@ body {
           padding: 0 0 5px 5px;
           width: calc(100% - 5px);
           height: calc(100% - 5px);
+          pointer-events: none;
         }
         
       }
+    }
+
+    .speed-tooltip{
+      position: absolute;
+      background: white;
+      transform: rotate(270deg);
+      z-index: 1;
+      padding: 5px;
+      translate: -10px -10px;
     }
 
 
