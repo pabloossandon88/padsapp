@@ -1,6 +1,6 @@
 import React from 'react'
 import Pad from './Pad'
-import useSound from 'use-sound'
+//import useSound from 'use-sound'
 import kick1 from '../../assets/sounds/KICK-1.wav'
 import kick2 from '../../assets/sounds/KICK-2.wav'
 import kick3 from '../../assets/sounds/KICK-3.wav'

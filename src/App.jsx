@@ -9,6 +9,8 @@ import PadsPanel from './components/pads/PadsPanel'
 const App = () => {
   const [padName, setPadName] = useState("Welcome to PadsAPP");
   const [fileName, setFileName] = useState("by TNR Beats Lab");
+  const [padVolumen, setPadVolumen] = useState();
+  const [padSpeed, setPadSpeed] = useState();
 
   const handleSpeedChange = (speed) => {
     const audioElement = document.querySelector('audio');
@@ -21,12 +23,14 @@ const App = () => {
     <div className="App">    
       <Nav></Nav>
       <div className='content'>
-        <Screen padName={padName} fileName={fileName} ></Screen>
+        <Screen padName={padName} fileName={fileName} padVolumen={padVolumen} padSpeed={padSpeed} ></Screen>
         <Controls onSpeedChange={handleSpeedChange} />
         <PadsPanel 
           onClickPad={(pad, fileName) => {
             setPadName(`${pad}`);
             setFileName(fileName);
+            setPadVolumen(100);
+            setPadSpeed(1.0);
             
           }} 
         />
