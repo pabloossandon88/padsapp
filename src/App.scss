@@ -191,11 +191,42 @@ body {
       position: absolute;
       background: rgb(49, 38, 95, 0.9);
       z-index: 1;
-      padding: 15px 20px 5px 20px;
       border-radius: 10px;
       color: white;
       border: 1px solid white;
       box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+      padding: 1rem;
+
+      .tooltip-content{
+        display: flex;
+        
+        .tooltip-icon{
+          font-size: 10px;
+          width: 50px;
+          display: flex;
+          align-items: left;
+        }
+      }
+
+      
+
+      .tooltip-title{
+        font-size: 12px;
+        margin: 0;
+        margin-bottom: 12px;
+        text-align: left;
+      }
+
+      .btn-close{
+        position: absolute;
+        top: -8px;
+        right: -4px;
+        padding: 4px 5px;
+        background: white;
+        color: black;
+        border-radius: 50%;
+        font-size: 8px;
+      }
 
       [type="range"] {
         -webkit-appearance: none;

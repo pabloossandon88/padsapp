@@ -5,7 +5,9 @@ import useSound from 'use-sound'
 
 const Pad = ({ padNumber, padFile, clickHandler, padSound, padProps})  => {
   const [playSound] = useSound( padSound, padProps );
+  padProps.playbackRate = 0.2;
   const [padClassName, setPadClassName] = useState("pad");
+  
   return (
     <>
       <div className={padClassName}
@@ -18,6 +20,8 @@ const Pad = ({ padNumber, padFile, clickHandler, padSound, padProps})  => {
             setTimeout(() => {
               setPadClassName( "pad")
             }, 100);
+
+            
           }
 
         } }

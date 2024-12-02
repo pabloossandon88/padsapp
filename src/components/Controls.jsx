@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faVolumeHigh, faGauge, faUpload } from '@fortawesome/free-solid-svg-icons';
+import { faVolumeHigh, faGauge, faUpload, faX, faPlay } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -15,7 +15,7 @@ const Controls = ({ padName, fileName }) => {
     const newVolumen = parseFloat(e.target.value);
     
     setPlaybackVolumen(newVolumen);
-    setShowVolumenTooltip(false);
+    //setShowVolumenTooltip(false);
     
     const audioElement = document.querySelector(`#audio-${padName}`);
     if (audioElement) {
@@ -28,7 +28,7 @@ const Controls = ({ padName, fileName }) => {
     const newSpeed = parseFloat(e.target.value);
     
     setPlaybackSpeed(newSpeed);
-    setShowSpeedTooltip(false);
+    //setShowSpeedTooltip(false);
     
     const audioElement = document.querySelector(`#audio-${padName}`);
     if (audioElement) {
@@ -43,17 +43,20 @@ const Controls = ({ padName, fileName }) => {
           <div className='btn circle' onClick={() => setShowVolumenTooltip(!showVolumenTooltip)}>
             <FontAwesomeIcon icon={faVolumeHigh} />
             {showVolumenTooltip && (
-              <div className="tooltip tooltip-volumen">
-                <span><FontAwesomeIcon icon={faVolumeHigh} /></span>
-                <input 
-                  type="range" 
-                  min="0.5" 
-                  max="2" 
-                  step="0.1" 
-                  value={playbackVolumen}
-                  onChange={handleVolumenChange}
-                />
-                <p>Volumen : {playbackVolumen}</p>
+              <div className="tooltip tooltip-volumen" onClick={() => setShowVolumenTooltip(!showVolumenTooltip)}>
+                <FontAwesomeIcon icon={faX} className='btn-close'/>
+                <p className='tooltip-title'>Volumen : {playbackVolumen} %</p>
+                <div className='tooltip-content'>
+                  <span className='tooltip-icon'><FontAwesomeIcon icon={faVolumeHigh} /></span>
+                  <input 
+                    type="range" 
+                    min="0" 
+                    max="100" 
+                    step="1" 
+                    value={playbackVolumen}
+                    onChange={handleVolumenChange}
+                  />
+                </div>              
               </div>
             )}
           </div>
@@ -62,15 +65,21 @@ const Controls = ({ padName, fileName }) => {
             <FontAwesomeIcon icon={faGauge} />
             {showSpeedTooltip && (
               <div className="tooltip tooltip-speed">
-                <input 
-                  type="range" 
-                  min="0.5" 
-                  max="2" 
-                  step="0.1" 
-                  value={playbackSpeed}
-                  onChange={handleSpeedChange}
-                />
-                <p>Velocidad : {playbackVolumen}</p>
+                <FontAwesomeIcon icon={faX} className='btn-close' onClick={() => setShowSpeedTooltip(!showSpeedTooltip)}/>
+                <p className='tooltip-title'>Velocidad : {playbackSpeed}</p>
+                <div className='tooltip-content'>
+                  <span className='tooltip-icon'>
+                    <FontAwesomeIcon icon={faPlay} />
+                  </span>
+                  <input 
+                    type="range" 
+                    min="0.00" 
+                    max="2.00" 
+                    step="0.01" 
+                    value={playbackSpeed}
+                    onChange={handleSpeedChange}
+                  />
+                </div>
               </div>
             )}
           </div>
